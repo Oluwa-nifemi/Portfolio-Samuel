@@ -38,6 +38,7 @@ document.querySelectorAll('.dropdown').forEach(dropdown => {
            content.classList.remove('is-active');
        }else{
            content.classList.add('is-active');
+           sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10)}px`;
        }
    })
 });
