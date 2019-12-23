@@ -1,14 +1,15 @@
 let prevTop = 0;
-window.addEventListener('scroll',() => {
-    //Toggle sidebar fixed and absolute
+
+const toggleSidebar = () => {
     const sidebar = document.querySelector('.sidebar');
     if(window.scrollY >= window.innerHeight) {
         sidebar.classList.add('sidebar--fixed');
     }else{
         sidebar.classList.remove('sidebar--fixed');
     }
+};
 
-    //Show navbar
+const toggleNav = () => {
     const nav = document.querySelector('nav');
     if(window.scrollY < prevTop){
         nav.classList.add('is-showing');
@@ -21,6 +22,11 @@ window.addEventListener('scroll',() => {
         nav.classList.remove('hide-boxshadow')
     }
     prevTop = window.scrollY;
+};
+
+window.addEventListener('scroll',() => {
+    toggleSidebar();
+    toggleNav();
 });
 
 const getDistanceFromTop = (element,current = 0) => element.parentElement ? getDistanceFromTop(element.parentElement,element.offsetTop + current) : current;
