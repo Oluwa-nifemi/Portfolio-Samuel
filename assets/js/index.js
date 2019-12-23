@@ -16,6 +16,7 @@ document.querySelector('.sideline').style.animationDelay = `${parseInt(homeSubte
 document.querySelector('.sideline').classList.add('fadeIn');
 
 let prevTop = 0;
+const root = document.documentElement;
 
 const toggleSidebar = () => {
     const sidebar = document.querySelector('.sidebar');
@@ -41,9 +42,26 @@ const toggleNav = () => {
     prevTop = window.scrollY;
 };
 
+const fadeInItems = () => {
+    const about = document.querySelector('.about');
+    if(window.scrollY + window.innerHeight > about.offsetTop + 400){
+        root.style.setProperty('--slide-distance','60px');
+        about.classList.add('slideUp')
+    }
+
+    const workCards = [...document.querySelectorAll('.work-card')];
+    workCards.forEach(card => {
+        if(window.scrollY + window.innerHeight > getDistanceFromTop(card) + 50){
+            root.style.setProperty('--slide-distance','30px');
+            card.classList.add('slideUp')
+        }
+    })
+};
+
 window.addEventListener('scroll',() => {
     toggleSidebar();
     toggleNav();
+    fadeInItems();
 });
 
 const getDistanceFromTop = (element,current = 0) => element.parentElement ? getDistanceFromTop(element.parentElement,element.offsetTop + current) : current;
