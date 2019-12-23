@@ -32,13 +32,14 @@ sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offs
 
 document.querySelectorAll('.dropdown').forEach(dropdown => {
    const button = dropdown.querySelector('.dropdown__button');
-   const content = document.querySelector('.dropdown__content');
+   const content = dropdown.querySelector('.dropdown__content');
    button.addEventListener('click', () => {
        if(content.classList.contains('is-active')){
            content.classList.remove('is-active');
        }else{
            content.classList.add('is-active');
-           sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10)}px`;
        }
+       const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
+       sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
    })
 });

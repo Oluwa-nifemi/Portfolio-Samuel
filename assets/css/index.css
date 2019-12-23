@@ -91,6 +91,7 @@ nav.hide-boxshadow{
     left: calc(100% - 130px);
     transform: rotate(90deg);
     transform-origin: left;
+    transition: 300ms;
 }
 
 .sideline__text{
