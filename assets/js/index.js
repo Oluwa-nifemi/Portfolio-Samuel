@@ -62,18 +62,15 @@ const fadeInItems = () => {
 };
 
 const setActiveSidebarLink = () => {
-    const activeElement = [...document.querySelectorAll('section')].filter(element => window.scrollY + window.innerHeight > element.offsetTop + 200).pop();
-    if(document.querySelector('.sidebar__link.is-active')){
-        document.querySelector('.sidebar__link.is-active').classList.remove('is-active');
-    }
-    if(activeElement){
+    const activeSection = [...document.querySelectorAll('section')].filter(element => window.scrollY + window.innerHeight > element.offsetTop + 200).pop();
+    if(activeSection){
         const sectionClasses = ['about','work','experience','contact'];
-        sectionClasses.forEach((className,idx) => {
-            console.log(activeElement.classList.contains(className));
-            if(activeElement.classList.contains(className)){
-                document.querySelector(`.sidebar__link:nth-of-type(${idx + 1})`).classList.add('is-active')
-            }
-        });
+        const activeSectionIndex = sectionClasses.findIndex((className,idx) => activeSection.classList.contains(className))
+        const activeLink = document.querySelector(`.sidebar__link:nth-of-type(${activeSectionIndex + 1})`);
+        if(activeLink !== document.querySelector('.sidebar__link.is-active')){
+            document.querySelector('.sidebar__link.is-active').classList.remove('is-active');
+        }
+        activeLink.classList.add('is-active');
     }
 };
 
