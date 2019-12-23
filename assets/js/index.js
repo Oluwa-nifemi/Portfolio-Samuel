@@ -51,7 +51,7 @@ const fadeInItems = () => {
     }
 
     // const workCards = [...document.querySelectorAll('.work-card')];
-    const fades = [...document.querySelectorAll('.work-card'),...dropdowns];
+    const fades = [...document.querySelectorAll('.work-card'),...dropdowns,document.querySelector('.contact')];
     // workCards.forEach(card => {
     fades.forEach(fades => {
         if(window.scrollY + window.innerHeight > getDistanceFromTop(fades) + 200){
@@ -61,10 +61,27 @@ const fadeInItems = () => {
     })
 };
 
+const setActiveSidebarLink = () => {
+    const activeElement = [...document.querySelectorAll('section')].filter(element => window.scrollY + window.innerHeight > element.offsetTop + 200).pop();
+    if(document.querySelector('.sidebar__link.is-active')){
+        document.querySelector('.sidebar__link.is-active').classList.remove('is-active');
+    }
+    if(activeElement){
+        const sectionClasses = ['about','work','experience','contact'];
+        sectionClasses.forEach((className,idx) => {
+            console.log(activeElement.classList.contains(className));
+            if(activeElement.classList.contains(className)){
+                document.querySelector(`.sidebar__link:nth-of-type(${idx + 1})`).classList.add('is-active')
+            }
+        });
+    }
+};
+
 window.addEventListener('scroll',() => {
     toggleSidebar();
     toggleNav();
     fadeInItems();
+    setActiveSidebarLink();
 });
 
 const getDistanceFromTop = (element,current = 0) => element.parentElement ? getDistanceFromTop(element.parentElement,element.offsetTop + current) : current;
