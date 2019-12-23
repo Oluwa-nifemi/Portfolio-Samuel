@@ -86,7 +86,7 @@ nav.hide-boxshadow{
     grid-template-columns: 75px auto;
     grid-column-gap: 50px;
     z-index: -1;
-    top: 100px;
+    top: 60vh;
     position: absolute;
     left: calc(100% - 130px);
     transform: rotate(90deg);

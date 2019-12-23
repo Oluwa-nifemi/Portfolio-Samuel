@@ -28,7 +28,7 @@ const getDistanceFromTop = (element,current = 0) => element.parentElement ? getD
 const lastDropdown = document.querySelector('.dropdown:last-of-type .dropdown__button');
 const sideLine = document.querySelector('.sideline');
 
-sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - 110}px`;
+sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10)}px`;
 
 document.querySelectorAll('.dropdown').forEach(dropdown => {
    const button = dropdown.querySelector('.dropdown__button');
