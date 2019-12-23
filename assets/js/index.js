@@ -49,11 +49,13 @@ const fadeInItems = () => {
         about.classList.add('slideUp')
     }
 
-    const workCards = [...document.querySelectorAll('.work-card')];
-    workCards.forEach(card => {
-        if(window.scrollY + window.innerHeight > getDistanceFromTop(card) + 50){
+    // const workCards = [...document.querySelectorAll('.work-card')];
+    const fades = [...document.querySelectorAll('.work-card'),...document.querySelectorAll('.dropdown')];
+    // workCards.forEach(card => {
+    fades.forEach(fades => {
+        if(window.scrollY + window.innerHeight > getDistanceFromTop(fades) + 200){
             root.style.setProperty('--slide-distance','30px');
-            card.classList.add('slideUp')
+            fades.classList.add('slideUp')
         }
     })
 };
@@ -66,10 +68,10 @@ window.addEventListener('scroll',() => {
 
 const getDistanceFromTop = (element,current = 0) => element.parentElement ? getDistanceFromTop(element.parentElement,element.offsetTop + current) : current;
 
-const lastDropdown = document.querySelector('.dropdown:last-of-type .dropdown__button');
+const lastDropdownDistance = getDistanceFromTop(document.querySelector('.dropdown:last-of-type .dropdown__button'));
 const sideLine = document.querySelector('.sideline');
 
-sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10)}px`;
+sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10)}px`;
 
 document.querySelectorAll('.dropdown').forEach(dropdown => {
    const button = dropdown.querySelector('.dropdown__button');
@@ -81,6 +83,6 @@ document.querySelectorAll('.dropdown').forEach(dropdown => {
            content.classList.add('is-active');
        }
        const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
-       sideLine.style.width = `${getDistanceFromTop(lastDropdown) + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
+       sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
    })
 });

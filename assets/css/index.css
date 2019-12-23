@@ -300,6 +300,7 @@ nav.hide-boxshadow{
 .dropdown{
     padding-right: 134px;
     margin-bottom: 33px;
+    opacity: 0;
 }
 
 .dropdown__circle-indicator{
