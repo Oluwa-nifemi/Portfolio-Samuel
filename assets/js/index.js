@@ -103,3 +103,11 @@ dropdowns.forEach((dropdown,idx) => {
        }
    })
 });
+
+[...document.querySelectorAll('.sidebar__link'),...document.querySelectorAll('.nav__item')].forEach(button => {
+   button.addEventListener('click',() => {
+        document.querySelector(`.${button.dataset.target}`).scrollIntoView({
+            behavior: 'smooth'
+        });
+   })
+});

@@ -9,16 +9,16 @@
     <nav class="is-showing hide-boxshadow">
         <img src="./assets/images/logo.svg" alt="Logo" class="nav__logo hide">
         <div class="nav__links">
-            <button class="nav__item">
+            <button class="nav__item" data-target="about">
                 About
             </button>
-            <button class="nav__item">
+            <button class="nav__item" data-target="work">
                 Work
             </button>
-            <button class="nav__item">
+            <button class="nav__item" data-target="experience">
                 Experience
             </button>
-            <button class="nav__item">
+            <button class="nav__item" data-target="contact">
                 Contact
             </button>
             <a href="#" class="nav__item nav__item--border">
@@ -43,18 +43,18 @@
         </h3>
     </header>
     <aside class="sidebar">
-        <p class="sidebar__link is-active">
+        <button class="sidebar__link is-active" data-target="about">
             About
-        </p>
-        <p class="sidebar__link">
+        </button>
+        <button class="sidebar__link" data-target="work">
             Work
-        </p>
-        <p class="sidebar__link">
+        </button>
+        <button class="sidebar__link" data-target="experience">
             Experience
-        </p>
-        <p class="sidebar__link">
+        </button>
+        <button class="sidebar__link" data-target="contact">
             Contact
-        </p>
+        </button>
     </aside>
     <section class="about hide">
         <div>

@@ -39,6 +39,7 @@ body{
     margin: 0;
     background-color: #131726;
     padding: 0 100px 200px;
+    scroll-behavior: smooth;
 }
 
 /*Specific classes*/
@@ -81,6 +82,7 @@ nav.hide-boxshadow{
     border: none;
     cursor: pointer;
     opacity: 0;
+    outline: none;
 }
 
 .nav__item--border{
@@ -159,9 +161,9 @@ nav.hide-boxshadow{
     height: fit-content;
     position: absolute;
     top: calc(200px + 100vh);
-    /*top: 100vh;*/
     width: 200px;
     display: inline-block;
+    z-index: 11;
 }
 
 .sidebar--fixed{
@@ -177,6 +179,11 @@ nav.hide-boxshadow{
     margin-bottom: 38px;
     transition: 0.4s ease-in-out;
     transform-origin: left;
+    background-color: transparent;
+    border: none;
+    display: block;
+    cursor: pointer;
+    outline: none;
 }
 
 .sidebar__link.is-active{
