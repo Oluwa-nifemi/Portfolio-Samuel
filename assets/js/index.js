@@ -6,10 +6,14 @@ navItems.forEach((item,i) => {
 
 document.querySelector('.nav__logo').classList.add('fadeIn');
 
-[...document.querySelectorAll('.home__heading span'),document.querySelector('.home__subtext')].forEach((item,i) => {
+const homeSubtext = document.querySelector('.home__subtext');
+[...document.querySelectorAll('.home__heading span'),homeSubtext].forEach((item,i) => {
     item.style.animationDelay = `${700 + i * 100}ms`;
     item.classList.add('slideUp');
 });
+
+document.querySelector('.sideline').style.animationDelay = `${parseInt(homeSubtext.style.animationDelay.slice(0,-2)) + 600}ms`;
+document.querySelector('.sideline').classList.add('fadeIn');
 
 let prevTop = 0;
 
