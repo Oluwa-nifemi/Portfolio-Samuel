@@ -17,6 +17,7 @@ document.querySelector('.sideline').classList.add('fadeIn');
 
 let prevTop = 0;
 const root = document.documentElement;
+const dropdowns = document.querySelectorAll('.dropdown');
 
 const toggleSidebar = () => {
     const sidebar = document.querySelector('.sidebar');
@@ -50,7 +51,7 @@ const fadeInItems = () => {
     }
 
     // const workCards = [...document.querySelectorAll('.work-card')];
-    const fades = [...document.querySelectorAll('.work-card'),...document.querySelectorAll('.dropdown')];
+    const fades = [...document.querySelectorAll('.work-card'),...dropdowns];
     // workCards.forEach(card => {
     fades.forEach(fades => {
         if(window.scrollY + window.innerHeight > getDistanceFromTop(fades) + 200){
@@ -73,7 +74,7 @@ const sideLine = document.querySelector('.sideline');
 
 sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10)}px`;
 
-document.querySelectorAll('.dropdown').forEach(dropdown => {
+dropdowns.forEach((dropdown,idx) => {
    const button = dropdown.querySelector('.dropdown__button');
    const content = dropdown.querySelector('.dropdown__content');
    button.addEventListener('click', () => {
@@ -82,7 +83,9 @@ document.querySelectorAll('.dropdown').forEach(dropdown => {
        }else{
            content.classList.add('is-active');
        }
-       const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
-       sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
+       if(idx !== dropdowns.length - 1){
+           const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
+           sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
+       }
    })
 });
