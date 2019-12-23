@@ -175,12 +175,11 @@ nav.hide-boxshadow{
     font-size: 24px;
     color: #B0B0B0;
     margin-bottom: 38px;
+    transition: 0.6s;
 }
 
 .sidebar__link.is-active{
-    background: linear-gradient(to bottom, white, #64E9EE);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #64E9EE;
 }
 
 .about, .work, .experience, .contact{
