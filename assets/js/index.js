@@ -1,3 +1,16 @@
+const navItems = [...document.querySelectorAll('.nav__item')];
+navItems.forEach((item,i) => {
+    item.style.animationDelay = `${i * 100}ms`;
+    item.classList.add('slideDown');
+});
+
+document.querySelector('.nav__logo').classList.add('fadeIn');
+
+[...document.querySelectorAll('.home__heading span'),document.querySelector('.home__subtext')].forEach((item,i) => {
+    item.style.animationDelay = `${700 + i * 100}ms`;
+    item.classList.add('slideUp');
+});
+
 let prevTop = 0;
 
 const toggleSidebar = () => {
