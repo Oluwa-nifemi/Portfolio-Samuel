@@ -115,3 +115,7 @@ dropdowns.forEach((dropdown,idx) => {
         });
    })
 });
+
+window.addEventListener('resize',_ => {
+    sideLine.style.width = `${getDistanceFromTop(document.querySelector('.dropdown:last-of-type .dropdown__button')) + 45 - (sideLine.offsetTop + 10)}px`;
+});

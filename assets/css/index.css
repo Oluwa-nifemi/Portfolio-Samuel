@@ -616,7 +616,7 @@ nav.hide-boxshadow{
         padding-right: 50px;
     }
     body{
-        padding: 0 20px 200px;
+        padding: 0 24px 100px;
     }
     nav{
         padding: 15px 20px;
@@ -624,8 +624,22 @@ nav.hide-boxshadow{
     .sideline,.dropdown__circle-indicator{
         display: none;
     }
+    .home__heading{
+        font-size: 38px;
+        line-height: 45px;
+    }
+    .home__subtext{
+        font-size: 16px;
+        line-height: 22px;
+    }
     .about__text-wrapper{
         padding: 0 20px;
+    }
+    .about__image-frame{
+        height: 100%;
+    }
+    .about__image{
+        height: unset;
     }
     .work-card{
         height: 120px;
@@ -654,7 +668,30 @@ nav.hide-boxshadow{
     .dropdown{
         padding-right: 0;
     }
-    .nav__item ~ .nav__item{
+    .nav__item{
         margin-left: 30px;
+        display: none;
+    }
+    .contact{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact__header{
+        text-align: center;
+        font-size: 16px;
+        line-height: 19px;
+    }
+    .contact__description{
+        font-size: 9px;
+        text-align: center;
+        line-height: 14px;
+        width: 317px;
+    }
+    .contact__link{
+        width: 91px;
+        height: 41px;
+        font-size: 12px;
     }
 }
