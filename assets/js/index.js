@@ -67,7 +67,7 @@ const setActiveSidebarLink = () => {
         const sectionClasses = ['about','work','experience','contact'];
         const activeSectionIndex = sectionClasses.findIndex((className,idx) => activeSection.classList.contains(className))
         const activeLink = document.querySelector(`.sidebar__link:nth-of-type(${activeSectionIndex + 1})`);
-        if(activeLink !== document.querySelector('.sidebar__link.is-active')){
+        if(document.querySelector('.sidebar__link.is-active') && activeLink !== document.querySelector('.sidebar__link.is-active')){
             document.querySelector('.sidebar__link.is-active').classList.remove('is-active');
         }
         activeLink.classList.add('is-active');
@@ -91,12 +91,16 @@ sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10)}
 dropdowns.forEach((dropdown,idx) => {
    const button = dropdown.querySelector('.dropdown__button');
    const content = dropdown.querySelector('.dropdown__content');
+   let active = false;
    button.addEventListener('click', () => {
-       if(content.classList.contains('is-active')){
+       if(active){
            content.classList.remove('is-active');
+           button.classList.remove('is-active');
        }else{
            content.classList.add('is-active');
+           button.classList.add('is-active');
        }
+       active = !active;
        if(idx !== dropdowns.length - 1){
            const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
            sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
