@@ -246,12 +246,18 @@ nav.hide-boxshadow{
 .work-card{
     width: 100%;
     height: 315px;
-    padding: 54px 0 0 85px;
+    padding: 54px 0 0 65px;
     opacity: 0;
+    text-decoration: none;
+    display: block;
 }
 
 .work-card:not(:last-of-type){
     margin-bottom: 50px;
+}
+
+.work-card--rrt{
+    background-color: #3397FD;
 }
 
 .work-card--punter{
@@ -264,6 +270,10 @@ nav.hide-boxshadow{
 
 .work-card--dm{
     background-color: #0500FF;
+}
+
+.work-card--real{
+    background-color: #18314F;
 }
 
 .work-card__header{
@@ -288,6 +298,12 @@ nav.hide-boxshadow{
     position: absolute;
 }
 
+.work-card__image--rrt{
+    height: calc(100% + 90px);
+    right: 0px;
+    bottom: 0;
+}
+
 .work-card__image--punterclash{
     height: calc(100% + 30px);
     right: 30px;
@@ -304,6 +320,12 @@ nav.hide-boxshadow{
     bottom: 0;
     height: 86%;
     right: 0;
+}
+
+.work-card__image--real{
+    height: 100%;
+    right: 0;
+    top: 0;
 }
 
 .dropdown{
