@@ -501,6 +501,36 @@ nav.hide-boxshadow{
     animation: fadeIn 1s forwards;
 }
 
+.content__sm-links{
+    display: flex;
+    margin-top: 92px;
+}
+
+.content__sm-link{
+    display: flex;
+    align-items: center;
+}
+
+.content__sm-link:not(:last-of-type){
+    margin-right: 86px;
+}
+
+.content__sm-link-icon{
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    margin-right: 16px;
+    border: 1px solid #64E9EE;
+    border-radius: 3px;
+}
+
+.content__sm-link-text{
+    font-family: 'SF Pro Text', sans-serif;
+    font-size: 16px;
+    color: white;
+}
 
 /*Animations*/
 @keyframes slideDown {
@@ -616,7 +646,7 @@ nav.hide-boxshadow{
         padding-right: 50px;
     }
     body{
-        padding: 0 24px 100px;
+        padding: 0 24px 30px;
     }
     nav{
         padding: 15px 20px;
@@ -668,6 +698,12 @@ nav.hide-boxshadow{
     .dropdown{
         padding-right: 0;
     }
+    .dropdown__button{
+        padding: 0 18px;
+    }
+    .dropdown__date{
+        margin: 0 12px 0 10px;
+    }
     .nav__item{
         margin-left: 30px;
         display: none;
@@ -687,11 +723,48 @@ nav.hide-boxshadow{
         font-size: 9px;
         text-align: center;
         line-height: 14px;
-        width: 317px;
+        max-width: 317px;
+        width: 90%;
     }
     .contact__link{
         width: 91px;
         height: 41px;
         font-size: 12px;
+    }
+    .content__sm-links{
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 60px;
+    }
+    .content__sm-link:not(:last-of-type){
+        margin-right: 20px;
+    }
+    .content__sm-link{
+        margin: 0 20px 30px;
+    }
+    .content__sm-link-text{
+        font-size: 12px;
+    }
+    .content__sm-link-icon{
+        width: 25px;
+        height: 25px;
+    }
+    .content__sm-link-icon img{
+        width: 16px;
+    }
+    .home{
+        height: fit-content;
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 350px) {
+    .work-card__image--lms,.work-card__image--dm{
+        height: 70%;
+    }
+    .work-card__image--punterclash{
+        width: 70%;
+        object-fit: cover;
     }
 }
