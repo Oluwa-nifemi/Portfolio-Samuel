@@ -108,7 +108,7 @@ dropdowns.forEach((dropdown,idx) => {
    })
 });
 
-[...document.querySelectorAll('.sidebar__link'),...document.querySelectorAll('.nav__item')].forEach(button => {
+[...document.querySelectorAll('.sidebar__link'),...document.querySelectorAll('.nav__item'),...document.querySelectorAll('.sidenav__item')].forEach(button => {
    button.addEventListener('click',() => {
         document.querySelector(`.${button.dataset.target}`).scrollIntoView({
             behavior: 'smooth'
@@ -122,9 +122,9 @@ window.addEventListener('resize',_ => {
 
 const sidenav = document.querySelector('.sidenav');
 
-document.querySelector('.sidenav__close').addEventListener('click',() => {
+[...document.querySelectorAll('.sidenav__item'),document.querySelector('.sidenav__close')].forEach(button => button.addEventListener('click',() => {
     sidenav.classList.remove('is-showing')
-});
+}));
 
 document.querySelector('.sidenav-open').addEventListener('click',() => {
     sidenav.classList.add('is-showing')
