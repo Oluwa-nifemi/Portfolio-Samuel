@@ -119,3 +119,13 @@ dropdowns.forEach((dropdown,idx) => {
 window.addEventListener('resize',_ => {
     sideLine.style.width = `${getDistanceFromTop(document.querySelector('.dropdown:last-of-type .dropdown__button')) + 45 - (sideLine.offsetTop + 10)}px`;
 });
+
+const sidenav = document.querySelector('.sidenav');
+
+document.querySelector('.sidenav__close').addEventListener('click',() => {
+    sidenav.classList.remove('is-showing')
+});
+
+document.querySelector('.sidenav-open').addEventListener('click',() => {
+    sidenav.classList.add('is-showing')
+});
