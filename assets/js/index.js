@@ -86,7 +86,7 @@ const getDistanceFromTop = (element,current = 0) => element.parentElement ? getD
 const lastDropdownDistance = getDistanceFromTop(document.querySelector('.dropdown:last-of-type .dropdown__button'));
 const sideLine = document.querySelector('.sideline');
 
-sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10)}px`;
+sideLine.style.width = `${lastDropdownDistance + 45 - sideLine.offsetTop + 10}px`;
 
 dropdowns.forEach((dropdown,idx) => {
     const button = dropdown.querySelector('.dropdown__button');
@@ -100,6 +100,9 @@ dropdowns.forEach((dropdown,idx) => {
     button.addEventListener('click', () => {
         if(active){
             content.style.height = `0px`;
+            if(idx !== dropdowns.length - 1){
+                sideLine.style.width = `${parseFloat(sideLine.style.width) - height}px`
+            }
         }else{
             if(height === null){
                 height = [...content.children].reduce((acc,child) => {
@@ -109,12 +112,11 @@ dropdowns.forEach((dropdown,idx) => {
                 },0);
             }
             content.style.height = `${height}px`;
+            if(idx !== dropdowns.length - 1){
+                sideLine.style.width = `${parseFloat(sideLine.style.width) + height}px`
+            }
         }
         active = !active;
-        if(idx !== dropdowns.length - 1){
-            const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
-            sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
-        }
     })
 });
 
