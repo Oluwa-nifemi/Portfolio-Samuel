@@ -412,19 +412,13 @@ nav.hide-boxshadow{
 }
 
 .dropdown__content{
-    max-height: 0;
+    height: 0;
     width: calc(100% - 46px);
     margin-left: 46px;
     background-color: #18314F;
-    transition: 600ms;
+    transition: 300ms;
     box-sizing: border-box;
     overflow: hidden;
-    height: fit-content;
-}
-
-.dropdown__content.is-active{
-    max-height: 300px;
-    /*padding: 36px 50px 36px 30px;*/
 }
 
 .dropdown__content-header{

@@ -65,7 +65,7 @@ const setActiveSidebarLink = () => {
     const activeSection = [...document.querySelectorAll('section')].filter(element => window.scrollY + window.innerHeight > element.offsetTop + 200).pop();
     if(activeSection){
         const sectionClasses = ['about','work','experience','contact'];
-        const activeSectionIndex = sectionClasses.findIndex((className,idx) => activeSection.classList.contains(className))
+        const activeSectionIndex = sectionClasses.findIndex((className) => activeSection.classList.contains(className));
         const activeLink = document.querySelector(`.sidebar__link:nth-of-type(${activeSectionIndex + 1})`);
         if(document.querySelector('.sidebar__link.is-active') && activeLink !== document.querySelector('.sidebar__link.is-active')){
             document.querySelector('.sidebar__link.is-active').classList.remove('is-active');
@@ -89,23 +89,33 @@ const sideLine = document.querySelector('.sideline');
 sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10)}px`;
 
 dropdowns.forEach((dropdown,idx) => {
-   const button = dropdown.querySelector('.dropdown__button');
-   const content = dropdown.querySelector('.dropdown__content');
-   let active = false;
-   button.addEventListener('click', () => {
-       if(active){
-           content.classList.remove('is-active');
-           button.classList.remove('is-active');
-       }else{
-           content.classList.add('is-active');
-           button.classList.add('is-active');
-       }
-       active = !active;
-       if(idx !== dropdowns.length - 1){
-           const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
-           sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
-       }
-   })
+    const button = dropdown.querySelector('.dropdown__button');
+    const content = dropdown.querySelector('.dropdown__content');
+    let active = false;
+    let height = null;
+    window.addEventListener('resize',() => {
+        //Reset height on window resize so that the height will be calculated based on that window width
+        height = null;
+    });
+    button.addEventListener('click', () => {
+        if(active){
+            content.style.height = `0px`;
+        }else{
+            if(height === null){
+                height = [...content.children].reduce((acc,child) => {
+                    const style = getComputedStyle(child);
+                    const addition = parseFloat(style.marginTop) + parseFloat(style.marginBottom) + parseFloat(style.height);
+                    return acc + addition
+                },0);
+            }
+            content.style.height = `${height}px`;
+        }
+        active = !active;
+        if(idx !== dropdowns.length - 1){
+            const activeDropdownContents = [...document.querySelectorAll('.dropdown__content.is-active')].length;
+            sideLine.style.width = `${lastDropdownDistance + 45 - (sideLine.offsetTop + 10) + (activeDropdownContents * 300)}px`;
+        }
+    })
 });
 
 [...document.querySelectorAll('.sidebar__link'),...document.querySelectorAll('.nav__item'),...document.querySelectorAll('.sidenav__item')].forEach(button => {
