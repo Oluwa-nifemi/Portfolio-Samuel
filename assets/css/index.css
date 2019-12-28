@@ -42,6 +42,14 @@ body{
     scroll-behavior: smooth;
 }
 
+.section-header{
+    font-family: 'SF Pro Text', sans-serif;
+    font-size: 20px;
+    color: white;
+    margin: 0 0 20px;
+    display: none;
+}
+
 /*Specific classes*/
 
 nav{
@@ -359,8 +367,11 @@ nav.hide-boxshadow{
 
 .dropdown{
     padding-right: 134px;
-    margin-bottom: 33px;
     opacity: 0;
+}
+
+.dropdown:not(:last-of-type){
+    margin-bottom: 33px;
 }
 
 .dropdown__circle-indicator{
@@ -658,8 +669,11 @@ nav.hide-boxshadow{
     .sidebar{
         display: none;
     }
+    .section-header{
+        display: block;
+    }
     .about, .work, .experience, .contact{
-        padding: 100px 0 0 0;
+        padding: 60px 0 0 0;
     }
     .about{
         grid-template-columns: 1fr;
